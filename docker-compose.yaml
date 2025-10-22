@@ -1,0 +1,17 @@
+services:
+  ros1_bridge_container:
+    image: rodrigo55/ros1_bridge_image:arm64
+    container_name: ros1_bridge_container
+    network_mode: host
+    restart: always
+    volumes:
+      - /var/lib/theconstruct.rrl/:/var/lib/theconstruct.rrl/
+      - ./volumes/topics.yaml:/catkin_ws/src/load_params/params/topics.yaml
+      - ./volumes/run_bridge.sh:/run_bridge.sh
+      - ./volumes/load_params.launch:/catkin_ws/src/load_params/launch/load_params.launch
+    environment:
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - CYCLONEDDS_URI=file:///var/lib/theconstruct.rrl/cyclonedds_husarnet.xml
+    entrypoint: ['/bin/bash', '-c']
+    command:
+      - /run_bridge.sh

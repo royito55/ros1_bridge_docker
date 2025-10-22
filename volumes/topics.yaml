@@ -1,0 +1,67 @@
+
+# topics:
+#   -
+#     topic: /some_ros1_topic
+#     type: std_msgs/msg/String
+#     queue_size: 1
+#     qos:
+#       history: keep_last  # OR keep_all, then you can omit `depth` parameter below
+#       depth: 10  # Only required when history == keep_last
+#       reliability: reliable  # OR best_effort
+#       durability: transient_local  # OR volatile
+#       deadline:
+#           secs: 10
+#           nsecs: 2345
+#       lifespan:
+#           secs: 20
+#           nsecs: 3456
+#       liveliness: liveliness_system_default  # Values from https://design.ros2.org/articles/qos_deadline_liveliness_lifespan.html, eg. LIVELINESS_AUTOMATIC
+#       liveliness_lease_duration:
+#           secs: 40
+#           nsecs: 5678
+
+topics:
+  -
+    topic: /tf_static
+    type: tf2_msgs/msg/TFMessage
+    queue_size: 1
+    qos:
+      history: keep_last
+      reliability: reliable
+      durability: transient_local
+  -
+    topic: /tf
+    type: tf2_msgs/msg/TFMessage
+    queue_size: 100
+  -
+    topic: /fastbot/scan
+    type: sensor_msgs/msg/LaserScan
+    queue_size: 100
+  -
+    topic: /fastbot/odom
+    type: nav_msgs/msg/Odometry
+    queue_size: 100
+  -
+    topic: /fastbot/cmd_vel
+    type: geometry_msgs/msg/Twist
+    queue_size: 100
+  -
+    topic: /fastbot/camera_info
+    type: sensor_msgs/msg/CameraInfo
+    queue_size: 100
+  -
+    topic: /fastbot/image_raw
+    type: sensor_msgs/msg/Image
+    queue_size: 5
+  -
+    topic: /fastbot/image_raw/compressed
+    type: sensor_msgs/msg/CompressedImage
+    queue_size: 20
+  -
+    topic: /fastbot/joint_states
+    type: sensor_msgs/msg/JointState
+    queue_size: 100
+# services_2_to_1:
+#   -
+#     service: /add_two_ints  # ROS 1 service name
+#     type: roscpp/tutorials/TwoInts  # The ROS 1 service type name
