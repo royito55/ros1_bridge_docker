@@ -34,33 +34,29 @@ topics:
     type: tf2_msgs/msg/TFMessage
     queue_size: 100
   -
-    topic: /fastbot/scan
+    topic: /scan
     type: sensor_msgs/msg/LaserScan
     queue_size: 100
   -
-    topic: /fastbot/odom
+    topic: /odom
     type: nav_msgs/msg/Odometry
     queue_size: 100
   -
-    topic: /fastbot/cmd_vel
+    topic: /cmd_vel
     type: geometry_msgs/msg/Twist
     queue_size: 100
   -
-    topic: /fastbot/camera_info
+    topic: /camera_info
     type: sensor_msgs/msg/CameraInfo
     queue_size: 100
   -
-    topic: /fastbot/image_raw
+    topic: /image_raw
     type: sensor_msgs/msg/Image
     queue_size: 5
   -
-    topic: /fastbot/image_raw/compressed
+    topic: /image_raw/compressed
     type: sensor_msgs/msg/CompressedImage
     queue_size: 20
-  -
-    topic: /fastbot/joint_states
-    type: sensor_msgs/msg/JointState
-    queue_size: 100
 # services_2_to_1:
 #   -
 #     service: /add_two_ints  # ROS 1 service name
